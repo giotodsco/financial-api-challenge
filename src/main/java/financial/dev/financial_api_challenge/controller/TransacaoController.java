@@ -6,10 +6,7 @@ import financial.dev.financial_api_challenge.service.TransacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/transacao")
@@ -23,7 +20,7 @@ public class TransacaoController {
 
 
     @PostMapping
-    public ResponseEntity<?> createTransaction(@RequestBody TransacaoRequestDTO transacaoRequestDTO){
+    public ResponseEntity createTransaction(@RequestBody TransacaoRequestDTO transacaoRequestDTO){
         try {
             transacaoService.validarTransacao(transacaoRequestDTO);
             transacaoRepository.salvarDados(transacaoRequestDTO);
@@ -33,7 +30,11 @@ public class TransacaoController {
         } catch(Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
+   }
 
-
-}
+   @DeleteMapping
+    public ResponseEntity deletarTransacoes(){
+        transacaoRepository.deletarList();
+        return ResponseEntity.status(HttpStatus.OK).build();
+   }
 }
