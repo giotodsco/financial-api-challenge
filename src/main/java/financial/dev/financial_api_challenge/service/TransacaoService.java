@@ -19,10 +19,11 @@ public class TransacaoService {
             throw new CampoObrigatorioException("Erro: Campos vazios, falta a hora");
         }
         if(transacaoRequestDTO.dateTime().isAfter(OffsetDateTime.now())){
-            throw new IllegalArgumentException("Erro: Não foi possível realizar a transação pois a data é futura");
+            throw new IllegalArgumentException("Erro: Não foi possível realizar a transação pois a data é futura - ["
+                    + transacaoRequestDTO.dateTime() + "]");
         }
         if(transacaoRequestDTO.valor().compareTo(BigDecimal.ZERO) <= 0){
-            throw new IllegalArgumentException("Erro: Valor negativo");
+            throw new IllegalArgumentException("Erro: Valor negativo - [" + transacaoRequestDTO.valor() + "]");
         }
     }
 
