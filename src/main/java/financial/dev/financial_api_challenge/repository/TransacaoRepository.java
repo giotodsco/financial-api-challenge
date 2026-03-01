@@ -34,7 +34,8 @@ public class TransacaoRepository {
         }
         DoubleSummaryStatistics estatisticas = transacaoRequestDTOS.stream()
                 .filter(transacaoRequestDTO ->
-                        transacaoRequestDTO.dateTime().isAfter(horaInicial) || transacaoRequestDTO.dateTime().isEqual(horaInicial))
+                        transacaoRequestDTO.dateTime().toInstant().isAfter(horaInicial.toInstant()) ||
+                                transacaoRequestDTO.dateTime().toInstant().equals(horaInicial.toInstant()))
                 .mapToDouble(value -> value.valor().doubleValue()).summaryStatistics();
 
 

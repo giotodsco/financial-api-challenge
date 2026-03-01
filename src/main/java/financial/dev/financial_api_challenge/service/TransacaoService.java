@@ -18,7 +18,7 @@ public class TransacaoService {
         if(transacaoRequestDTO.dateTime() == null){
             throw new CampoObrigatorioException("Erro: Campos vazios, falta a hora");
         }
-        if(transacaoRequestDTO.dateTime().isAfter(OffsetDateTime.now())){
+        if(transacaoRequestDTO.dateTime().toInstant().isAfter(OffsetDateTime.now().toInstant())){
             throw new IllegalArgumentException("Erro: Não foi possível realizar a transação pois a data é futura - ["
                     + transacaoRequestDTO.dateTime() + "]");
         }
