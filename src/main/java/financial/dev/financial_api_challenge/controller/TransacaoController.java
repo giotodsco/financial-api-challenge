@@ -1,5 +1,6 @@
 package financial.dev.financial_api_challenge.controller;
 
+import financial.dev.financial_api_challenge.docs.TransacaoControllerDoc;
 import financial.dev.financial_api_challenge.dtos.TransacaoRequestDTO;
 import financial.dev.financial_api_challenge.repository.TransacaoRepository;
 import financial.dev.financial_api_challenge.service.TransacaoService;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequestMapping("/transacao")
-public class TransacaoController {
+public class TransacaoController implements TransacaoControllerDoc {
 
     @Autowired
     private TransacaoService transacaoService;

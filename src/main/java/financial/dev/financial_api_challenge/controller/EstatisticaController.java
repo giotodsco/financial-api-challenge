@@ -1,5 +1,6 @@
 package financial.dev.financial_api_challenge.controller;
 
+import financial.dev.financial_api_challenge.docs.EstatisticasControllerDoc;
 import financial.dev.financial_api_challenge.dtos.EstatisticaProperties;
 import financial.dev.financial_api_challenge.repository.TransacaoRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +15,7 @@ import java.time.OffsetDateTime;
 @Slf4j
 @RestController
 @RequestMapping("/estatistica")
-public class EstatisticaController {
+public class EstatisticaController implements EstatisticasControllerDoc {
 
     @Autowired
     private TransacaoRepository transacaoRepository;
